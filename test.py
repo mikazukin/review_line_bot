@@ -1,3 +1,8 @@
+from dotenv import load_dotenv
+load_dotenv()
+
+import os
+
 from flask import Flask, request, abort
 
 from linebot.v3 import (
@@ -30,8 +35,13 @@ import json
 
 app = Flask(__name__)
 
-configuration = Configuration(access_token='f3+CiVamf26s1PRr03BznTat92Zts5wmMaefVKOYxrokkhJhUTwttOfJGxo5fK66kQ308F/exKnmIWnbCrxNvb2G2ZyqHP/FZvrEdlVg9TC5KiOOKqKgEYmlYqJhUhAhfmksPDq03sJPQMJx6xzTZQdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('05f7ff3dcb80c0da2d6f2acda1ab5357')
+print("-----")
+print(os.getenv('CHANNEL_ACCESS_TOKEN'))
+print(os.getenv("CHANNEL_SECRET"))
+print("-----")
+
+configuration = Configuration(access_token=os.getenv("CHANNEL_ACCESS_TOKEN"))
+handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
 
 
 @app.route("/callback", methods=['POST'])
