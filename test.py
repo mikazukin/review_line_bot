@@ -35,11 +35,6 @@ import json
 
 app = Flask(__name__)
 
-print("-----")
-print(os.getenv('CHANNEL_ACCESS_TOKEN'))
-print(os.getenv("CHANNEL_SECRET"))
-print("-----")
-
 configuration = Configuration(access_token=os.getenv("CHANNEL_ACCESS_TOKEN"))
 handler = WebhookHandler(os.getenv("CHANNEL_SECRET"))
 
